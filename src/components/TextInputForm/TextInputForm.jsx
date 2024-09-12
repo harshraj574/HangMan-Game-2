@@ -14,6 +14,7 @@ function TextInputForm({ inputType, handleFormSubmit, handleTextInputChange, han
                 />
             </div>
 
+            <div style={{display:'flex'}}>
             <div>
                 <Button
                     styleType="warning"
@@ -29,6 +30,9 @@ function TextInputForm({ inputType, handleFormSubmit, handleTextInputChange, han
                     text="Submit"
                 />
             </div>
+            </div>
+
+            
         </form>
     );
 }

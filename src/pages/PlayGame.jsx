@@ -3,13 +3,9 @@ import Maskedtext from "../components/MaskedText/MaskedText";
 import LetterButtons from "../components/LetterButtons/LetterButtons";
 import { useState } from "react";
 import HangMan from "../components/HangMan/HangMan";
+import MyModal from "../components/Modal/Modal";
 
 function PlayGame() {
-
-    // const [searchParams] = useSearchParams();
-    // console.log(searchParams.get("text"))
-
-    // const { text, id } = useParams();
 
     const { state } = useLocation();
 
@@ -29,17 +25,25 @@ function PlayGame() {
 
     return (
         <>
-            <h1>Play Game </h1>
-
-            <Maskedtext text={state.wordSelected} guessedLetters={guessedLetters} />
+        <div style={{backgroundColor:'#a3a3a3'}}>
+        <div style={{display:'flex'}}>
             <div>
-                <LetterButtons text={state.wordSelected} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
-
+            <div>
+                <Maskedtext text={state.wordSelected} guessedLetters={guessedLetters}/>
             </div>
+            <div>
+                 <LetterButtons text={state.wordSelected} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
+            </div>
+            </div>
+           
             <div>
                 <HangMan step={step} />
             </div>
-            <Link to='/start'  className="text-blue-400">Start Game Link</Link>
+           </div>
+           <MyModal guessedLetters={guessedLetters} step={step} text={state.wordSelected} />
+
+        </div>
+            {/* <Link to='/start'  className="text-blue-400">Start Game Link</Link> */}
         </>
     );
 }
