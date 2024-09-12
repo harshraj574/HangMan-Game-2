@@ -1,16 +1,22 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Maskedtext from "../components/MaskedText/MaskedText";
 import LetterButtons from "../components/LetterButtons/LetterButtons";
-import { useState } from "react";
+import { startTransition, useState } from "react";
 import HangMan from "../components/HangMan/HangMan";
 import MyModal from "../components/Modal/Modal";
+import Button from "../components/Button/Button";
 
 function PlayGame() {
 
-    const { state } = useLocation();
-
+    const  [hintText,setHintText] = useState("Click for Hint");
     const [guessedLetters, setGuessedLetters] = useState([]);
     const [step, setStep] = useState(0);
+     const [isClicked,setIsClicked] = useState(false);
+
+    const { state } = useLocation();
+    console.log("letter is",state.wordSelected); //the original word given
+
+    
 
     function handleLetterClick(letter) {
         if(state.wordSelected.toUpperCase().includes(letter)) {
@@ -21,6 +27,17 @@ function PlayGame() {
         }
 
         setGuessedLetters([...guessedLetters, letter]);
+        console.log(guessedLetters);
+    }
+
+    function handleHintClick(){
+        let originalTextArray = state.wordSelected.toUpperCase().split('');
+        originalTextArray.map((letter)=>{
+            if(guessedLetters.includes(letter) == false){
+                setHintText(letter);
+            }  
+        })
+        setIsClicked(true);
     }
 
     return (
@@ -40,8 +57,15 @@ function PlayGame() {
                 <HangMan step={step} />
             </div>
            </div>
+           <div>
+            <Button
+             onClickHandler={handleHintClick}
+             text = {`${hintText}`}
+             styleType="warning"
+             disabled ={isClicked ? "true" : "false"}
+            />
+           </div>
            <MyModal guessedLetters={guessedLetters} step={step} text={state.wordSelected} />
-
         </div>
             {/* <Link to='/start'  className="text-blue-400">Start Game Link</Link> */}
         </>
