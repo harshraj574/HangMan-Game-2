@@ -52,13 +52,18 @@ function TextInputFormContainer() {
     },[inputType]);
 
     return (
-        <TextInputForm 
-            inputType={inputType}
-            handleFormSubmit={handleFormSubmit} 
-            handleTextInputChange={handleTextInputChange} 
-            handleShowHideClick={handleShowHideClick}
-        />
+        <>
+            <TextInputForm 
+                inputType={inputType}
+                handleFormSubmit={handleFormSubmit} 
+                handleTextInputChange={handleTextInputChange} 
+                handleShowHideClick={handleShowHideClick}
+            />
+
+        </>
+        
     );
 }
+
 
 export default TextInputFormContainer;

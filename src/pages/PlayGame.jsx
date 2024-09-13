@@ -19,7 +19,7 @@ function PlayGame() {
     
 
     function handleLetterClick(letter) {
-        if(state.wordSelected.toUpperCase().includes(letter)) {
+        if(state?.wordSelected?.toUpperCase().includes(letter)) {
             console.log('Correct');
         } else {
             console.log('Wrong');
