@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button/Button";
+import Img1 from "../assets/Images/down.jpeg";
 
 function Home(){
 
@@ -24,7 +25,7 @@ function Home(){
         </div>
 
         <div className="homeImg">
-                <img src="./src/assets/Images/152241700-6beb6cd4-62e4-4830-84c3-7b67997bae49.jpeg" alt="hello" />
+                <img src={Img1} alt="hello" />
         </div>
 
         </div>
