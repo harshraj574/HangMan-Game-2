@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextInputForm from "./TextInputForm";
 import { useNavigate } from "react-router-dom";
 
@@ -34,6 +34,22 @@ function TextInputFormContainer() {
         console.log(inputType);
         
     }
+
+    useEffect(()=>{
+        console.log("componented mounted");
+    },[]); //passing empty dependancy array
+
+    useEffect(()=>{
+        console.log("Component Effecting");
+    }); //not passing dependancy array
+
+    useEffect(()=>{
+        console.log("component first load and value state variable updated")
+    },[value]);
+
+    useEffect(()=>{
+        console.log("component first load and inputType state variable updated");
+    },[inputType]);
 
     return (
         <TextInputForm 

@@ -7,5 +7,47 @@
     background-color: aqua;
 }
 .vsc-initialized{
-    background-color: #374151;
+    /* background-color: #374151; */
+    background-color: #212121;
+    height: 100vh;
+}
+.homeHeader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 540px){
+    .homeHeader{
+         flex-direction: row;
+         /* flex-grow: 10; */
+     }
+ }
+
+.startHeader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.startHeader h1{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 3rem;
+    line-height: 24px;
+    
+}
+.homeClass{
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));   
+    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr) ) ; */
+}
+.homeImg{
+    height: 100vh;
+}
+.homeImg img{
+    height: 100vh;
+    width: 100vw;
 }

@@ -42,10 +42,10 @@ function PlayGame() {
 
     return (
         <>
-        <div style={{backgroundColor:'#a3a3a3'}}>
+        <div>
         <div style={{display:'flex'}}>
             <div>
-            <div>
+            <div style={{color:"white"}}>
                 <Maskedtext text={state.wordSelected} guessedLetters={guessedLetters}/>
             </div>
             <div>
