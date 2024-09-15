@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TextInputForm from "./TextInputForm";
 import { useNavigate } from "react-router-dom";
 
@@ -6,15 +6,16 @@ function TextInputFormContainer() {
 
     const [inputType, setInputType] = useState("password");
     const [value, setValue] = useState("");
+    const [desc,setDesc] = useState("");
 
     const navigate = useNavigate(); // useNavigate is a hook that returns a navigate function
 
     function handleFormSubmit(event) {
         event.preventDefault();
         console.log("Form submitted", value);
-        if(value) {
+        if(value && desc) {
             // if we have something in value then we want to go to the play page
-            navigate(`/play`, { state: { wordSelected: value } });
+            navigate(`/play`, { state: { wordSelected: value , wordDescription: desc} });
         }
     }
 
@@ -22,6 +23,12 @@ function TextInputFormContainer() {
         console.log("Text input changed");
         console.log(event.target.value);
         setValue(event.target.value);
+    }
+
+    function handleDescInputChange(event){
+        console.log("Desc input changed");
+        console.log(event.target.value);
+        setDesc(event.target.value);
     }
 
     function handleShowHideClick() {
@@ -35,22 +42,6 @@ function TextInputFormContainer() {
         
     }
 
-    useEffect(()=>{
-        console.log("componented mounted");
-    },[]); //passing empty dependancy array
-
-    useEffect(()=>{
-        console.log("Component Effecting");
-    }); //not passing dependancy array
-
-    useEffect(()=>{
-        console.log("component first load and value state variable updated")
-    },[value]);
-
-    useEffect(()=>{
-        console.log("component first load and inputType state variable updated");
-    },[inputType]);
-
     return (
         <>
             <TextInputForm 
@@ -58,8 +49,8 @@ function TextInputFormContainer() {
                 handleFormSubmit={handleFormSubmit} 
                 handleTextInputChange={handleTextInputChange} 
                 handleShowHideClick={handleShowHideClick}
+                handleDescInputChange ={handleDescInputChange}
             />
-
         </>
         
     );

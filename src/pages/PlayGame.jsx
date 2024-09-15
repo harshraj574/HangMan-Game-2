@@ -1,73 +1,44 @@
-import { useLocation } from "react-router-dom";
 import Maskedtext from "../components/MaskedText/MaskedText";
 import LetterButtons from "../components/LetterButtons/LetterButtons";
-import { startTransition, useState } from "react";
 import HangMan from "../components/HangMan/HangMan";
 import MyModal from "../components/Modal/Modal";
 import Button from "../components/Button/Button";
 
-function PlayGame() {
-
-    const  [hintText,setHintText] = useState("Click for Hint");
-    const [guessedLetters, setGuessedLetters] = useState([]);
-    const [step, setStep] = useState(0);
-     const [isClicked,setIsClicked] = useState(false);
-
-    const { state } = useLocation();
-    console.log("letter is",state.wordSelected); //the original word given
-
-    
-
-    function handleLetterClick(letter) {
-        if(state?.wordSelected?.toUpperCase().includes(letter)) {
-            console.log('Correct');
-        } else {
-            console.log('Wrong');
-            setStep(step + 1);
-        }
-
-        setGuessedLetters([...guessedLetters, letter]);
-        console.log(guessedLetters);
-    }
-
-    function handleHintClick(){
-        let originalTextArray = state.wordSelected.toUpperCase().split('');
-        originalTextArray.map((letter)=>{
-            if(guessedLetters.includes(letter) == false){
-                setHintText(letter);
-            }  
-        })
-        setIsClicked(true);
-    }
+function PlayGame({guessedLetters,handleHintClick,step,handleLetterClick,hintText,isClicked,originalWord,wordDescription}) {
 
     return (
         <>
-        <div>
-        <div style={{display:'flex'}}>
+        <div className="playGameOuter">
+    
+        <div className="playGameLeft">
+        <h1 className="playGameLeftDesc">{wordDescription}</h1>
             <div>
-            <div style={{color:"white"}}>
-                <Maskedtext text={state.wordSelected} guessedLetters={guessedLetters}/>
+            <div style={{color:"white",letterSpacing:"5px",}} className="mx-2 my-2 p-2 ">
+                <Maskedtext text={originalWord} guessedLetters={guessedLetters}/>
             </div>
-            <div>
-                 <LetterButtons text={state.wordSelected} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
+            <div className="letterBtn">
+                 <LetterButtons text={originalWord} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
             </div>
             </div>
-           
-            <div>
-                <HangMan step={step} />
-            </div>
-           </div>
-           <div>
+
+            {/* <div> */}
             <Button
              onClickHandler={handleHintClick}
              text = {`${hintText}`}
              styleType="warning"
              disabled ={isClicked ? "true" : "false"}
+             classname={"text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"}
             />
+           {/* </div> */}
+
            </div>
-           <MyModal guessedLetters={guessedLetters} step={step} text={state.wordSelected} />
+
+           <div className="playGameRight">
+                <HangMan step={step} />
+            </div>
+          
+           <MyModal guessedLetters={guessedLetters} step={step} text={originalWord} />
         </div>
-            {/* <Link to='/start'  className="text-blue-400">Start Game Link</Link> */}
         </>
     );
 }

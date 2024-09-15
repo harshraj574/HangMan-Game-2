@@ -35,7 +35,7 @@ export default function MyModal({ guessedLetters, step, text }) {
 
   function close() {
     setIsOpen(false);
-    navigate('/start');
+    navigate('/');
   }
 
   const modalStyle  = function(){
