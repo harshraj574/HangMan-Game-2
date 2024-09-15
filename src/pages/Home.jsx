@@ -19,7 +19,7 @@ function Home(){
     }
 
     async function fetchWords() {
-        const respose  = await fetch("http://localhost:3000/words");
+        const respose  = await fetch("https://json-server-vercel-kappa-seven.vercel.app/words");
         const data = await respose.json();
         console.log(data);
 
