@@ -11,30 +11,23 @@
     background-color: #212121;
     height: 100vh;
 }
-.homeHeader{
+/* .homeHeader{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* flex-wrap: wrap; */
-}
+} */
 .homeHeader h1{
     font-family:'Courier New', Courier, monospace;
      font-size: 1rem;
     /* line-height: 24px;  */
 }
-.homeBtnDiv{
+/* .homeBtnDiv{
     display: flex;
     justify-content: space-evenly;
+} */
 
-}
 
-@media (max-width: 540px){
-    .homeHeader{
-         flex-direction: row;
-         /* flex-grow: 10; */
-     }
- }
 
 
 .startHeader{
@@ -52,16 +45,25 @@
 .homeClass{
     display: grid;
     /* grid-template-columns: 1fr 1fr; */
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));   
+    /* grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));    */
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
     /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr) ) ; */
 }
-.homeImg{
+
+  @media (max-width : 640px){
+    .homeImg{
+        display: none;
+    }   
+}  
+/* .homeImg{
     height: 100vh;
 }
 .homeImg img{
     height: 100vh;
     width: 100vw;
-}
+} */
+ 
 .playGameOuter{
     display: flex;
     align-items: center;
