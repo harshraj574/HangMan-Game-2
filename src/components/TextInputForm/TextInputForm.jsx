@@ -4,7 +4,7 @@ import TextInput from "../TextInput/TextInput";
 function TextInputForm({ inputType, handleFormSubmit, handleTextInputChange, handleShowHideClick,handleDescInputChange }) {
    
     return (
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} className="formClass">
             <div>
                 <TextInput 
                     type={inputType}

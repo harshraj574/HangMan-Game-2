@@ -44,13 +44,16 @@ function TextInputFormContainer() {
 
     return (
         <>
-            <TextInputForm 
+        <div>
+        <TextInputForm 
                 inputType={inputType}
                 handleFormSubmit={handleFormSubmit} 
                 handleTextInputChange={handleTextInputChange} 
                 handleShowHideClick={handleShowHideClick}
                 handleDescInputChange ={handleDescInputChange}
             />
+        </div>
+           
         </>
         
     );

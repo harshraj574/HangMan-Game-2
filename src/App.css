@@ -6,11 +6,6 @@
 .dialogg{
     background-color: aqua;
 }
-.vsc-initialized{
-    /* background-color: #374151; */
-    background-color: #212121;
-    height: 100vh;
-}
 /* .homeHeader{
     display: flex;
     flex-direction: column;
@@ -35,6 +30,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: black;
 }
 .startHeader h1{
     font-family:'Courier New', Courier, monospace;
@@ -44,11 +40,9 @@
 }
 .homeClass{
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    /* grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));    */
     grid-template-columns: 1fr 1fr;
-    /* grid-template-rows: 1fr 1fr; */
-    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr) ) ; */
+    background-color: black;
+   
 }
 
   @media (max-width : 640px){
@@ -67,6 +61,7 @@
 .playGameOuter{
     display: flex;
     align-items: center;
+    background-color: black;
     /* justify-content: center; */
 }
 .playGameLeft{
